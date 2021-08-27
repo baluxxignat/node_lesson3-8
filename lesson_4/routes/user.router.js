@@ -8,9 +8,9 @@ const {
 } = require('../middlewares/user.middleware');
 
 router.get('/', userController.getAllUsers);
-router.post('/', checkUniqueEmail, isFildsNotEmpty, userController.createUser);
+router.post('/', isFildsNotEmpty, checkUniqueEmail, userController.createUser);
 router.get('/:user_id', isUserPresent, userController.getSingleUser);
 router.delete('/:user_id', isUserPresent, userController.deleteUser);
-router.put('/:user_id', isUserPresent, isFildsNotEmpty, userController.updateUser);
+router.put('/:user_id', isFildsNotEmpty, isUserPresent, userController.updateUser);
 
 module.exports = router;

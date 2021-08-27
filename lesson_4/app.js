@@ -9,13 +9,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const { userRouter } = require('./routes');
+const { userRouter, carRouter } = require('./routes');
 const { NOT_FOUND, INTERNAL_SERVER_ERROR } = require('./config/statusCodes');
 const { M_NOT_FOUND } = require('./config/messages');
 
 app.get('/ping', (req, res) => res.json('Pong'));
 
 app.use('/users', userRouter);
+app.use('/cars', carRouter);
 
 // ERRORS HANDLER
 app.use('*', _notFoundError);

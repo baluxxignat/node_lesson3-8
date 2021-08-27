@@ -30,7 +30,7 @@ module.exports = {
 
     createUser: async (req, res, next) => {
         try {
-            const createdUser = await createItem(Users, req.query);
+            const createdUser = await createItem(Users, req.body);
 
             res.json(createdUser);
         } catch (e) {
@@ -52,7 +52,7 @@ module.exports = {
     updateUser: async (req, res, next) => {
         try {
             const { user_id } = req.params;
-            const updatedUser = await updateItem(Users, user_id);
+            const updatedUser = await updateItem(Users, user_id, req.body);
 
             res.json(updatedUser);
         } catch (e) {
