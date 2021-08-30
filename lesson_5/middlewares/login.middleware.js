@@ -1,12 +1,6 @@
 const Users = require('../dataBase/User');
-const {
-    MAIL_OR_PASS,
-    FIELDS_EMPTY
-} = require('../config/messages');
-const {
-    NOT_FOUND,
-    BAD_REQUEST
-} = require('../config/statusCodes');
+const { MAIL_OR_PASS } = require('../config/messages');
+const { NOT_FOUND } = require('../config/statusCodes');
 const ErrorHandler = require('../errors/ErrorHandler');
 
 module.exports = {
@@ -22,20 +16,6 @@ module.exports = {
             }
 
             req.user = user;
-            next();
-        } catch (e) {
-            next(e);
-        }
-    },
-
-    isLoginationNotEmpty: (req, res, next) => {
-        try {
-            const { email, password } = req.body;
-
-            if (!password || !email) {
-                throw new ErrorHandler(BAD_REQUEST, FIELDS_EMPTY);
-            }
-
             next();
         } catch (e) {
             next(e);

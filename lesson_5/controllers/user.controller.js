@@ -11,7 +11,9 @@ module.exports = {
         try {
             const allUsers = await functionService.getAllItems(Users, req.query);
 
-            res.json(allUsers);
+            const normalizeAllUsers = allUsers.map((item) => userToNormalize(item));
+
+            res.json(normalizeAllUsers);
         } catch (e) {
             next(e);
         }

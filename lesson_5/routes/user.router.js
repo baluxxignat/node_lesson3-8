@@ -16,13 +16,13 @@ router.get('/:user_id',
     userController.getSingleUser);
 
 router.delete('/:user_id',
-    userMiddleware.validateUserBody,
     userMiddleware.isUserPresent,
     userController.deleteUser);
 
 router.put('/:user_id',
     userMiddleware.updateSomeFildsUser,
     userMiddleware.isUserPresent,
+    userMiddleware.checkUniqueEmail,
     userController.updateUser);
 
 module.exports = router;

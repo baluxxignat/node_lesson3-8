@@ -17,11 +17,4 @@ module.exports = {
         }
     },
 
-    someInputForm: (req, res, next) => {
-        try {
-            res.json('logination page');
-        } catch (e) {
-            next(e);
-        }
-    },
 };

@@ -28,8 +28,8 @@ const updateUserValidator = Joi.object({
 });
 
 const preLoginValidator = Joi.object({
-    email: Joi.string().regex(EMAIL_REGEXP).required().trim(),
-    password: Joi.string().regex(PASSWORD_REGEXP).required().trim()
+    email: Joi.string().regex(EMAIL_REGEXP).required().trim().required(),
+    password: Joi.string().regex(PASSWORD_REGEXP).required().trim().required()
 });
 
 module.exports = {
