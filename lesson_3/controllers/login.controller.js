@@ -5,9 +5,9 @@ module.exports = {
         res.render('login');
     },
 
-    postLoginVerification: async (req, res) => {
+    postLoginVerification: (req, res) => {
         const { email, password } = req.body;
-        const parseUsers = await readUsersFromDB;
+        const parseUsers = readUsersFromDB;
         const userById = parseUsers.find((user) => user.email === email && user.password === password);
 
         if (userById) {

@@ -2,20 +2,22 @@
   "name": "node_balu",
   "version": "1.0.0",
   "description": "",
-  "main": "lesson_4/app.js",
+  "main": "lesson_5/app.js",
   "scripts": {
-    "start": "node lesson_4/app.js",
-    "dev": "nodemon lesson_4/app.js"
+    "start": "node lesson_5/app.js",
+    "dev": "nodemon lesson_5/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
+    "joi": "^17.4.2",
     "mongoose": "^6.0.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
