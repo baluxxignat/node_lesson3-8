@@ -20,5 +20,5 @@ const getCarValidator = Joi.object({
 module.exports = {
     createCarValidator,
     updateCarValidator,
-    getCarValidator
+    getCarValidator,
 };
