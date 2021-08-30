@@ -1,9 +1,11 @@
 const ErrorHandler = require('../errors/ErrorHandler');
 const Cars = require('../dataBase/Car');
-const { FIELDS_EMPTY, M_NOT_FOUND } = require('../config/messages');
+const { M_NOT_FOUND } = require('../config/messages');
 const { NOT_FOUND, BAD_REQUEST } = require('../config/statusCodes');
+const { carValidator } = require('../validators');
 
 module.exports = {
+
     isCarExist: async (req, res, next) => {
         try {
             const { car_id } = req.params;
@@ -20,12 +22,40 @@ module.exports = {
         }
     },
 
-    isFildsNotEmpty: (req, res, next) => {
+    validateCarForCreate: (req, res, next) => {
         try {
-            const { model, year, price } = req.body;
+            const { error } = carValidator.createCarValidator.validate(req.body);
 
-            if (!model || !year || !price) {
-                throw new ErrorHandler(BAD_REQUEST, FIELDS_EMPTY);
+            if (error) {
+                throw new ErrorHandler(BAD_REQUEST, error.details[0].message);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    updateCar: (req, res, next) => {
+        try {
+            const { error } = carValidator.updateCarValidator.validate(req.body);
+
+            if (error) {
+                throw new ErrorHandler(BAD_REQUEST, error.details[0].message);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    validateCarId: (req, res, next) => {
+        try {
+            const { error } = carValidator.getCarValidator.validate(req.body);
+
+            if (error) {
+                throw new ErrorHandler(BAD_REQUEST, error.details[0].message);
             }
 
             next();

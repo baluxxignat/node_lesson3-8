@@ -13,7 +13,12 @@ const updateCarValidator = Joi.object({
     price: Joi.number()
 });
 
+const getCarValidator = Joi.object({
+    car_id: Joi.string().trim().required(),
+});
+
 module.exports = {
     createCarValidator,
-    updateCarValidator
+    updateCarValidator,
+    getCarValidator
 };

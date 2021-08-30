@@ -2,7 +2,7 @@ const ErrorHandler = require('../errors/ErrorHandler');
 const Users = require('../dataBase/User');
 const { ALREADY_EXIST, M_NOT_FOUND } = require('../config/messages');
 const { CONFLICT, NOT_FOUND, BAD_REQUEST } = require('../config/statusCodes');
-const userValidator = require('../validators/user.validator');
+const { userValidator } = require('../validators');
 
 module.exports = {
     isUserPresent: async (req, res, next) => {
