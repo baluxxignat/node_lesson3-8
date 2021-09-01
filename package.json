@@ -2,10 +2,10 @@
   "name": "node_balu",
   "version": "1.0.0",
   "description": "",
-  "main": "lesson_5/app.js",
+  "main": "lesson_6/app.js",
   "scripts": {
-    "start": "node lesson_5/app.js",
-    "dev": "nodemon lesson_5/app.js"
+    "start": "node lesson_6/app.js",
+    "dev": "nodemon lesson_6/app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",

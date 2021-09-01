@@ -14,7 +14,7 @@
 chrome-profiler-events*.json
 
 # IDEs and editors
-/lesson_2/.idea
+/.idea
 .project
 .classpath
 .c9/
@@ -43,7 +43,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-.idea
-node_modules
 package-lock.json
 .env
