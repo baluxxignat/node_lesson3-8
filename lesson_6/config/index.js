@@ -3,6 +3,6 @@ module.exports = {
     messages: require('./messages'),
     statusCodes: require('./statusCodes'),
     user_roles_enum: require('./user-roles.enum'),
-    variables: require('./veriables'),
+    variables: require('./variables'),
     functionVariables: require('./functionsVariables')
 };

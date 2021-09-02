@@ -6,5 +6,5 @@ module.exports = {
     PARAMS: 'params',
     USER: 'user',
     USER_ID: 'user_id',
-    V: '__v'
+    V: '__v',
 };

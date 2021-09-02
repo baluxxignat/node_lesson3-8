@@ -1,9 +1,9 @@
 const { functionService } = require('../services');
 const { User } = require('../dataBase');
-const { statusCodes: { OK } } = require('../config');
 const { messages: { DELETED } } = require('../config');
 const { passwordService } = require('../services');
 const { user_normalizator: { userToNormalize } } = require('../utils');
+const { statusCodes: { CREATED, NO_CONTENT } } = require('../config');
 
 module.exports = {
 
@@ -39,7 +39,7 @@ module.exports = {
 
             const userNormalized = userToNormalize(createdUser);
 
-            res.json(userNormalized);
+            res.status(CREATED).json(userNormalized);
         } catch (e) {
             next(e);
         }
@@ -50,7 +50,7 @@ module.exports = {
             const { user_id } = req.params;
             await functionService.deleteCurrentItem(User, user_id);
 
-            res.status(OK).json(`${user_id} ${DELETED}`);
+            res.status(NO_CONTENT).json(`${user_id} ${DELETED}`);
         } catch (e) {
             next(e);
         }
@@ -61,7 +61,7 @@ module.exports = {
             const { user_id } = req.params;
             const updatedUser = await functionService.updateItem(User, user_id, req.body);
 
-            res.json(updatedUser);
+            res.status(CREATED).json(updatedUser);
         } catch (e) {
             next(e);
         }

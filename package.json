@@ -2,10 +2,10 @@
   "name": "node_balu",
   "version": "1.0.0",
   "description": "",
-  "main": "lesson_6/app.js",
+  "main": "lesson_7/app.js",
   "scripts": {
-    "start": "node lesson_6/app.js",
-    "dev": "nodemon lesson_6/app.js"
+    "start": "node lesson_7/app.js",
+    "dev": "nodemon lesson_7/app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
     "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"

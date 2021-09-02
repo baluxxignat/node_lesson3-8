@@ -1,6 +1,7 @@
 const { functionService } = require('../services');
 const { Car } = require('../dataBase');
 const { messages: { DELETED } } = require('../config');
+const { statusCodes: { CREATED, NO_CONTENT } } = require('../config');
 
 module.exports = {
 
@@ -26,7 +27,7 @@ module.exports = {
         try {
             const createdCar = await functionService.createItem(Car, req.body);
 
-            res.json(createdCar);
+            res.status(CREATED).json(createdCar);
         } catch (e) {
             next(e);
         }
@@ -37,7 +38,7 @@ module.exports = {
             const { car_id } = req.params;
             await functionService.deleteCurrentItem(Car, car_id);
 
-            res.json(`${car_id} ${DELETED}`);
+            res.status(NO_CONTENT).json(`${car_id} ${DELETED}`);
         } catch (e) {
             next(e);
         }
@@ -48,7 +49,7 @@ module.exports = {
             const { car_id } = req.params;
             const updatedCar = await functionService.updateItem(Car, car_id, req.body);
 
-            res.json(updatedCar);
+            res.status(CREATED).json(updatedCar);
         } catch (e) {
             next(e);
         }
