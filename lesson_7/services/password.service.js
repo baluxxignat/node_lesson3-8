@@ -1,7 +1,10 @@
 const bcrypt = require('bcrypt');
+
 const { ErrorHandler } = require('../errors');
-const { statusCodes: { BAD_REQUEST } } = require('../config');
-const { messages: { MAIL_OR_PASS } } = require('../config');
+const {
+    statusCodes: { BAD_REQUEST },
+    messages: { MAIL_OR_PASS }
+} = require('../config');
 
 module.exports = {
 

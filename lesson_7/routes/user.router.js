@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+const { User } = require('../dataBase');
 const {
     functionVariables: {
         ADMIN,
@@ -13,13 +14,14 @@ const {
 } = require('../config');
 const { userController } = require('../controllers');
 const { userValidator: { createUserValidator, updateUserValidator } } = require('../validators');
-const { loginMiddleware: { validateAccessToken }, userMiddleware: { throwErrorWhenExist } } = require('../middlewares');
 const {
     userMiddleware: {
         validateSomeFilds,
         checkUserRole,
-        getItemByDynamicParams
-    }
+        getItemByDynamicParams,
+        throwErrorWhenExist
+    },
+    loginMiddleware: { validateAccessToken }
 } = require('../middlewares');
 
 router.get('/',
@@ -32,13 +34,13 @@ router.post('/',
     userController.createUser);
 
 router.get('/:user_id',
-    getItemByDynamicParams(USER_ID, PARAMS, ID),
+    getItemByDynamicParams(User, USER_ID, PARAMS, ID),
     throwErrorWhenExist(),
     userController.getSingleUser);
 
 router.delete('/:user_id',
     validateAccessToken,
-    getItemByDynamicParams(USER_ID, PARAMS, ID),
+    getItemByDynamicParams(User, USER_ID, PARAMS, ID),
     throwErrorWhenExist(),
     checkUserRole([ADMIN]),
     userController.deleteUser);
@@ -46,7 +48,7 @@ router.delete('/:user_id',
 router.put('/:user_id',
     validateAccessToken,
     validateSomeFilds(updateUserValidator),
-    getItemByDynamicParams(USER_ID, PARAMS, ID),
+    getItemByDynamicParams(User, USER_ID, PARAMS, ID),
     throwErrorWhenExist(),
     checkUserRole([USER]),
     userController.updateUser);

@@ -1,5 +1,4 @@
 const { ErrorHandler } = require('../errors');
-const { User } = require('../dataBase');
 const {
     messages: {
         M_NOT_FOUND,
@@ -70,13 +69,14 @@ module.exports = {
         }
     },
 
-    getItemByDynamicParams: (paramName, searchIn = 'body', dbFiled = paramName) => async (req, res, next) => {
+    getItemByDynamicParams: (DB, paramName, searchIn = 'body', dbFiled = paramName) => async (req, res, next) => {
         try {
             const valueParam = req[searchIn][paramName];
 
-            const user = await User.findOne({ [dbFiled]: valueParam });
+            const item = await DB.findOne({ [dbFiled]: valueParam });
 
-            req.user = user;
+            req.user = item;
+            req.car = item;
 
             next();
         } catch (e) {

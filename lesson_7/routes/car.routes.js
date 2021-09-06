@@ -1,15 +1,16 @@
 const router = require('express').Router();
 
+const { Car } = require('../dataBase');
 const { carController } = require('../controllers');
+const { functionVariables: { CAR_ID, PARAMS, ID } } = require('../config');
 const {
     carMiddleware: {
         validateCarForCreate,
         validateCarId,
         updateCar
-    }
+    },
+    userMiddleware: { getItemByDynamicParams }
 } = require('../middlewares');
-const { functionVariables: { CAR_ID, PARAMS, ID } } = require('../config');
-const { userMiddleware: { getItemByDynamicParams } } = require('../middlewares');
 
 router.get('/',
     carController.getAllCars);
@@ -18,14 +19,16 @@ router.post('/',
     carController.createCar);
 router.get('/:car_id',
     validateCarId,
-    getItemByDynamicParams(CAR_ID, PARAMS, ID),
+    getItemByDynamicParams(Car, CAR_ID, PARAMS, ID),
     carController.getSingleCar);
 router.delete('/:car_id',
-    getItemByDynamicParams(CAR_ID, PARAMS, ID),
+    validateCarId,
+    getItemByDynamicParams(Car, CAR_ID, PARAMS, ID),
     carController.deleteCar);
 router.put('/:car_id',
-    getItemByDynamicParams(CAR_ID, PARAMS, ID),
+    validateCarId,
     updateCar,
+    getItemByDynamicParams(Car, CAR_ID, PARAMS, ID),
     carController.updateCar);
 
 module.exports = router;

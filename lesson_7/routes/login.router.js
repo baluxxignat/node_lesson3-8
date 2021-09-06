@@ -1,5 +1,4 @@
-const router = require('express')
-    .Router();
+const router = require('express').Router();
 
 const { loginController } = require('../controllers');
 const {
@@ -7,10 +6,13 @@ const {
         preLoginUser,
         getItemByDynamicParams,
         throwErrorWhenExist
+    },
+    loginMiddleware: {
+        validateAccessToken,
+        validateRefreshToken
     }
 } = require('../middlewares');
 const { functionVariables: { EMAIL } } = require('../config');
-const { loginMiddleware: { validateAccessToken, validateRefreshToken } } = require('../middlewares');
 
 router.post('/',
     preLoginUser,

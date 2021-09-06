@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
-const { user_roles_enum } = require('../config');
-const { dataBaseTokenEnum: { USER } } = require('../config');
+
+const { user_roles_enum, dataBaseTokenEnum: { USER } } = require('../config');
 
 const userShema = new Schema({
     name: {

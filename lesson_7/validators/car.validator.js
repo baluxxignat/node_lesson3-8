@@ -1,4 +1,5 @@
 const Joi = require('joi');
+
 const { constans: { CURRENT_YEAR } } = require('../config');
 
 const createCarValidator = Joi.object({

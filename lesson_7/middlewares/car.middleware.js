@@ -34,7 +34,8 @@ module.exports = {
 
     validateCarId: (req, res, next) => {
         try {
-            const { error } = carValidator.getCarValidator.validate(req.body);
+            const { _id } = req.body;
+            const { error } = carValidator.getCarValidator.validate(_id);
 
             if (error) {
                 throw new ErrorHandler(BAD_REQUEST, error.details[0].message);

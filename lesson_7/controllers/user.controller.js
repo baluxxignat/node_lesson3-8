@@ -1,9 +1,7 @@
-const { functionService } = require('../services');
+const { functionService, passwordService } = require('../services');
 const { User } = require('../dataBase');
-const { messages: { DELETED } } = require('../config');
-const { passwordService } = require('../services');
 const { user_normalizator: { userToNormalize } } = require('../utils');
-const { statusCodes: { CREATED, NO_CONTENT } } = require('../config');
+const { messages: { DELETED }, statusCodes: { CREATED, NO_CONTENT } } = require('../config');
 
 module.exports = {
 

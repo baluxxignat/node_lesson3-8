@@ -1,7 +1,10 @@
-const { messages: { NO_TOKEN, INV_TOKEN } } = require('../config');
-const { statusCodes: { CODE_AUTH } } = require('../config');
+const {
+    messages: { NO_TOKEN, INV_TOKEN },
+    statusCodes: { CODE_AUTH },
+    functionVariables: { AUTHORIZATION, USER }
+} = require('../config');
+
 const { ErrorHandler } = require('../errors');
-const { functionVariables: { AUTHORIZATION, USER } } = require('../config');
 const { loginService: { verifyToken } } = require('../services');
 const { Oauth } = require('../dataBase');
 

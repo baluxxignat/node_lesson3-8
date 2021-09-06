@@ -1,7 +1,6 @@
 const { functionService } = require('../services');
 const { Car } = require('../dataBase');
-const { messages: { DELETED } } = require('../config');
-const { statusCodes: { CREATED, NO_CONTENT } } = require('../config');
+const { messages: { DELETED }, statusCodes: { CREATED, NO_CONTENT } } = require('../config');
 
 module.exports = {
 
