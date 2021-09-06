@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { functionVariables: { CAR } } = require('../config');
 
 const carShema = new Schema({
     model: {
@@ -21,4 +22,4 @@ const carShema = new Schema({
 
 }, { timestamps: true });
 
-module.exports = model('Car', carShema);
+module.exports = model(CAR, carShema);

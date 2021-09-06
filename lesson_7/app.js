@@ -1,5 +1,3 @@
-// - 'Car', 'refresh', 'access' - краще вже з констант використовуй
-// - коректніше перевіряти роль юзера, який надіслав токен, тобто loginedUser
 const express = require('express');
 const mongoose = require('mongoose');
 

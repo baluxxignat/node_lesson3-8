@@ -29,7 +29,7 @@ router.get('/',
 
 router.post('/',
     validateSomeFilds(createUserValidator),
-    getItemByDynamicParams(EMAIL),
+    getItemByDynamicParams(User, EMAIL),
     throwErrorWhenExist(CONFLICTED_EMAIL),
     userController.createUser);
 
@@ -46,8 +46,8 @@ router.delete('/:user_id',
     userController.deleteUser);
 
 router.put('/:user_id',
-    validateAccessToken,
     validateSomeFilds(updateUserValidator),
+    validateAccessToken,
     getItemByDynamicParams(User, USER_ID, PARAMS, ID),
     throwErrorWhenExist(),
     checkUserRole([USER]),

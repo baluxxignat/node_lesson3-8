@@ -5,7 +5,8 @@ const { ErrorHandler } = require('../errors');
 const {
     variables: { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY },
     statusCodes: { CODE_AUTH },
-    messages: { INV_TOKEN }
+    messages: { INV_TOKEN },
+    functionVariables: { ACCESS }
 } = require('../config');
 
 const verifyPromise = promisify(jwt.verify);
@@ -21,9 +22,9 @@ module.exports = {
         };
     },
 
-    verifyToken: async (token, tokenType = 'access') => {
+    verifyToken: async (token, tokenType = ACCESS) => {
         try {
-            const secretWord = tokenType === 'access' ? ACCESS_SECRET_KEY : REFRESH_SECRET_KEY;
+            const secretWord = tokenType === ACCESS ? ACCESS_SECRET_KEY : REFRESH_SECRET_KEY;
 
             await verifyPromise(token, secretWord);
         } catch (e) {

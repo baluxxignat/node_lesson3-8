@@ -1,7 +1,7 @@
 const {
     messages: { NO_TOKEN, INV_TOKEN },
     statusCodes: { CODE_AUTH },
-    functionVariables: { AUTHORIZATION, USER }
+    functionVariables: { AUTHORIZATION, USER, REFRESH }
 } = require('../config');
 
 const { ErrorHandler } = require('../errors');
@@ -42,7 +42,7 @@ module.exports = {
                 throw new ErrorHandler(CODE_AUTH, NO_TOKEN);
             }
 
-            await verifyToken(refresh_token, 'refresh');
+            await verifyToken(refresh_token, REFRESH);
 
             const tokenFromDB = await Oauth.findOne({ refresh_token });
 

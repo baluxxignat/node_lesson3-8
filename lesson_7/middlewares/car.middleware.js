@@ -34,7 +34,7 @@ module.exports = {
 
     validateCarId: (req, res, next) => {
         try {
-            const { _id } = req.body;
+            const { _id } = req.params;
             const { error } = carValidator.getCarValidator.validate(_id);
 
             if (error) {

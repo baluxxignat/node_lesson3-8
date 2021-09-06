@@ -48,7 +48,7 @@ module.exports = {
 
     checkUserRole: (rolesArr = []) => (req, res, next) => {
         try {
-            const { role } = req.user;
+            const { role } = req.loginedUser;
             const { loginedUser, user } = req;
 
             if (loginedUser._id.toString() === user._id.toString()) {
