@@ -1,7 +1,8 @@
 const {
+    user_roles_enum: { USER },
     messages: { NO_TOKEN, INV_TOKEN },
     statusCodes: { CODE_AUTH },
-    functionVariables: { AUTHORIZATION, USER, REFRESH }
+    functionVariables: { AUTHORIZATION, REFRESH }
 } = require('../config');
 
 const { ErrorHandler } = require('../errors');
@@ -44,7 +45,7 @@ module.exports = {
 
             await verifyToken(refresh_token, REFRESH);
 
-            const tokenFromDB = await Oauth.findOne({ refresh_token });
+            const tokenFromDB = await Oauth.findOne({ refresh_token }).populate(USER);
 
             if (!tokenFromDB) {
                 throw new ErrorHandler(CODE_AUTH, INV_TOKEN);
