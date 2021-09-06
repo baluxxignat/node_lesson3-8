@@ -15,7 +15,7 @@ const updateCarValidator = Joi.object({
 });
 
 const getCarValidator = Joi.object({
-    car_id: Joi.string().trim().required(),
+    car_id: Joi.string().trim().length(24).required(),
 });
 
 module.exports = {
