@@ -2,10 +2,10 @@
   "name": "node_balu",
   "version": "1.0.0",
   "description": "",
-  "main": "lesson_7/app.js",
+  "main": "lesson_8/app.js",
   "scripts": {
-    "start": "node lesson_7/app.js",
-    "dev": "nodemon lesson_7/app.js"
+    "s": "nodemon app.js",
+    "dev": "nodemon lesson_8/app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,17 +14,22 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
-    "dotenv": "^10.0.0",
+    "dotenv": "9.0.2",
+    "email-templates": "^8.0.8",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.1",
+    "nodemailer": "^6.6.3",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.4",
+    "@types/email-templates": "^8.0.4",
     "eslint": "7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.1",

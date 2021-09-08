@@ -13,8 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const { userRouter, carRouter, loginRouter } = require('./routes');
-const { statusCodes: { NOT_FOUND, INTERNAL_SERVER_ERROR } } = require('./config');
-const { messages: { M_NOT_FOUND } } = require('./config');
+const {
+    statusCodes: { NOT_FOUND, INTERNAL_SERVER_ERROR },
+    messages: { M_NOT_FOUND }
+} = require('./config');
 
 app.get('/ping', (req, res) => res.json('Pong'));
 
