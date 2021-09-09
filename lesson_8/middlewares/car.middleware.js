@@ -1,5 +1,5 @@
 const { ErrorHandler } = require('../errors');
-const { statusCodes: { BAD_REQUEST } } = require('../config');
+const { messages: { M_NOT_FOUND }, statusCodes: { BAD_REQUEST, NOT_FOUND } } = require('../config');
 const { carValidator } = require('../validators');
 
 module.exports = {
@@ -45,4 +45,18 @@ module.exports = {
             next(e);
         }
     },
+
+    throwError: () => (req, res, next) => {
+        try {
+            const { car } = req;
+
+            if (!car) {
+                return next(new ErrorHandler(NOT_FOUND, M_NOT_FOUND));
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    }
 };

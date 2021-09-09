@@ -13,8 +13,8 @@ const {
         ACCOUNT_DELETED_USER,
         ACCOUNT_DELETED_ADMIN
     },
-    messages: { DELETED },
     statusCodes: { CREATED, NO_CONTENT },
+    // variables: { SEND_FROM_EMAIL }
 } = require('../config');
 
 module.exports = {
@@ -69,10 +69,12 @@ module.exports = {
 
             if (userIsLogined) {
                 await emailService.sendMail(email, ACCOUNT_DELETED_USER, { name });
+                res.status(NO_CONTENT);
+                return;
             }
             await emailService.sendMail(email, ACCOUNT_DELETED_ADMIN, { name });
 
-            res.status(NO_CONTENT).json(`${user_id} ${DELETED}`);
+            res.status(NO_CONTENT);
         } catch (e) {
             next(e);
         }

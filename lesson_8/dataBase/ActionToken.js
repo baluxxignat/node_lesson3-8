@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const { dataBaseTokenEnum: { USER, ACTION_TOKEN } } = require('../config');
 
-const ForgotPass = new Schema({
+const ActionToken = new Schema({
 
     action_token: {
         type: String,
@@ -15,4 +15,4 @@ const ForgotPass = new Schema({
     }
 }, { timestamps: true });
 
-module.exports = model(ACTION_TOKEN, ForgotPass);
+module.exports = model(ACTION_TOKEN, ActionToken);

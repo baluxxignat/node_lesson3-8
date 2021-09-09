@@ -5,7 +5,9 @@ const {
     userMiddleware: {
         preLoginUser,
         getItemByDynamicParams,
-        throwErrorWhenExist
+        throwErrorWhenExist,
+        validateNewPassword,
+        validateEmailWhenForgot
     },
     loginMiddleware: {
         validateAccessToken,
@@ -29,14 +31,14 @@ router.post('/refresh',
     validateRefreshToken,
     loginController.refreshToken);
 
-router.post('/password/forgot',
+router.post('/password/forgot/send',
+    validateEmailWhenForgot,
     getItemByDynamicParams(User, EMAIL),
     throwErrorWhenExist(),
     passwordController.forgotPassword);
 
-router.get('/password/reset',
-    getItemByDynamicParams(User, EMAIL),
-    throwErrorWhenExist(),
+router.post('/password/forgot/set',
+    validateNewPassword,
     passwordController.resetPassword);
 
 module.exports = router;

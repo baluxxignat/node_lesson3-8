@@ -4,7 +4,6 @@ const { Oauth } = require('../dataBase');
 const {
     emailActionEnum: { LOGINATION_SUCCESSFUL },
     statusCodes: { NO_CONTENT, CREATED },
-    messages: { LOG_OUT },
     functionVariables: { AUTHORIZATION }
 } = require('../config');
 
@@ -37,7 +36,7 @@ module.exports = {
 
             await Oauth.deleteOne({ access_token });
 
-            res.status(NO_CONTENT).json(LOG_OUT);
+            res.status(NO_CONTENT);
         } catch (e) {
             next(e);
         }

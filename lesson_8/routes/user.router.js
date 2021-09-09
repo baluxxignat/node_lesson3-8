@@ -9,7 +9,6 @@ const {
         ID,
         EMAIL,
         CONFLICTED_EMAIL,
-        USER
     }
 } = require('../config');
 const { userController } = require('../controllers');
@@ -50,7 +49,7 @@ router.put('/:user_id',
     validateAccessToken,
     getItemByDynamicParams(User, USER_ID, PARAMS, ID),
     throwErrorWhenExist(),
-    checkUserRole([USER]),
+    checkUserRole([ADMIN]),
     userController.updateUser);
 
 module.exports = router;

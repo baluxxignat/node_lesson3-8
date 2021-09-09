@@ -1,6 +1,6 @@
 const { functionService } = require('../services');
 const { Car } = require('../dataBase');
-const { messages: { DELETED }, statusCodes: { CREATED, NO_CONTENT } } = require('../config');
+const { statusCodes: { CREATED, NO_CONTENT } } = require('../config');
 
 module.exports = {
 
@@ -37,7 +37,7 @@ module.exports = {
             const { car_id } = req.params;
             await functionService.deleteCurrentItem(Car, car_id);
 
-            res.status(NO_CONTENT).json(`${car_id} ${DELETED}`);
+            res.status(NO_CONTENT);
         } catch (e) {
             next(e);
         }

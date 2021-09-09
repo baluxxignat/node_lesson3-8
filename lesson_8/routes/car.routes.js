@@ -7,7 +7,8 @@ const {
     carMiddleware: {
         validateCarForCreate,
         validateCarId,
-        updateCar
+        updateCar,
+        throwError
     },
     userMiddleware: { getItemByDynamicParams }
 } = require('../middlewares');
@@ -20,15 +21,18 @@ router.post('/',
 router.get('/:car_id',
     validateCarId,
     getItemByDynamicParams(Car, CAR_ID, PARAMS, ID),
+    throwError(),
     carController.getSingleCar);
 router.delete('/:car_id',
     validateCarId,
     getItemByDynamicParams(Car, CAR_ID, PARAMS, ID),
+    throwError(),
     carController.deleteCar);
 router.put('/:car_id',
     validateCarId,
     updateCar,
     getItemByDynamicParams(Car, CAR_ID, PARAMS, ID),
+    throwError(),
     carController.updateCar);
 
 module.exports = router;

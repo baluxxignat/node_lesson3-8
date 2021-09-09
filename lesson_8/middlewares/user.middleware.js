@@ -97,6 +97,38 @@ module.exports = {
         } catch (e) {
             next(e);
         }
+    },
+
+    validateNewPassword: (req, res, next) => {
+        try {
+            const { error, value } = userValidator.passwordValidator.validate(req.body);
+
+            req.body = value;
+
+            if (error) {
+                throw new ErrorHandler(BAD_REQUEST, error.details[0].message);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    validateEmailWhenForgot: (req, res, next) => {
+        try {
+            const { error, value } = userValidator.emailValidator.validate(req.body);
+
+            req.body = value;
+
+            if (error) {
+                throw new ErrorHandler(BAD_REQUEST, error.details[0].message);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
     }
 
 };
