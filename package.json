@@ -2,10 +2,10 @@
   "name": "node_balu",
   "version": "1.0.0",
   "description": "",
-  "main": "lesson_8/app.js",
+  "main": "lesson_9/app.js",
   "scripts": {
-    "s": "nodemon app.js",
-    "dev": "nodemon lesson_8/app.js"
+    "s": "nodemon lesson_9/app.js",
+    "dev": "nodemon lesson_9/app.js"
   },
   "keywords": [],
   "author": "",
